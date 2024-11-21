@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.15)
 # include(cmake/generic/vcpkg.cmake)
 
 # Project
-project(template)
+project(segno)
 include(cmake/generic/project.cmake)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -25,9 +25,10 @@ include(cmake/generic/assets.cmake)
 include(cmake/generic/publish.cmake)
 
 # Processing
-# ...
+include(cmake/generic/antlr.cmake)
 
 # Subprojects
+add_subdirectory(src/segno)
 add_subdirectory(src/repo_version)
 
 # Publication

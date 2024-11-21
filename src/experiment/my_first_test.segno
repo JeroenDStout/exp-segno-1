@@ -1,0 +1,9 @@
+# test
+
+field pos_x
+field pos_y
+
+operator brownian
+
+pass my_first_pass {
+}

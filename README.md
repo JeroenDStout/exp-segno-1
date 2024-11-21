@@ -1,2 +1,2 @@
-# tmpl-basic-1
-Template for new projects
+# Segno experiment 1
+Experiment using codegen to create ECS (-like) processing passes
