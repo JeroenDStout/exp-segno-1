@@ -16,5 +16,5 @@ class debug_listener(segno_grammarListener):
     super().exitEveryRule(ctx)
     
   def visitTerminal(self, ctx):
-    print(('|  ' * (self.indentation-1)) + '|- "' + ctx.getText() + '"')
+    print(('|  ' * self.indentation) + '|- "' + ctx.getText() + '"')
     super().visitTerminal(ctx)

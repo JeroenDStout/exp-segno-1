@@ -1,7 +1,7 @@
 # test
 
-field pos_x
-field pos_y
+field pos_x : float
+field pos_y : float
 
 operator brownian
 

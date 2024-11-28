@@ -20,6 +20,7 @@ setup_project_source(segno "processor/objects"
     segno/sg_operator.py
     segno/sg_pass.py
     segno/sg_identifier.py
+    segno/sg_typename.py
 )
 
 # Antlr files

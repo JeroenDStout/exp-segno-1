@@ -26,6 +26,7 @@ TOKEN_IPLMAP_LW : ':<'  ;
 TOKEN_IPLMAP_RW : ':>'  ;
 TOKEN_PLUS      : '+'   ;
 TOKEN_MINUS     : '-'   ;
+TOKEN_COLON     : ':'   ;
 TOKEN_DCOLON    : '::'  ;
 TOKEN_DDOT      : '..'  ;
 
@@ -69,7 +70,7 @@ prog_element
 // ------------------------------
 
 field_def
-    : KEYWORD_FIELD identifier
+    : KEYWORD_FIELD identifier TOKEN_COLON typename
     ;
     
 // ------------------------------
@@ -105,4 +106,12 @@ identifier_name
 
 identifier
     : identifier_name
+    ;
+    
+// ------------------------------
+//      types
+// ------------------------------
+
+typename
+    : identifier
     ;

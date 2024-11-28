@@ -4,6 +4,7 @@ from segno.sg_field import *
 from segno.sg_operator import *
 from segno.sg_identifier import *
 from segno.sg_pass import *
+from segno.sg_typename import *
 
 from overrides import override
 
@@ -55,6 +56,15 @@ class listener(segno_grammarListener):
   def exitIdentifier(self, ctx:segno_grammarParser.IdentifierContext):
     identifier_ctx = self.stack_pop()
     self.stack[-1].exit_identifier(identifier_ctx)
+    
+  @override
+  def enterTypename(self, ctx:segno_grammarParser.TypenameContext):
+    self.stack_push(sg_typename_ctx())
+    
+  @override
+  def exitTypename(self, ctx:segno_grammarParser.TypenameContext):
+    typename_ctx = self.stack_pop()
+    self.stack[-1].exit_typename(typename_ctx)
     
   @override
   def enterIdentifier_name(self, ctx:segno_grammarParser.Identifier_nameContext):
