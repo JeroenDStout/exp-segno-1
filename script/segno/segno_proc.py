@@ -28,5 +28,6 @@ tree   = parser.prog()
 
 # debug
 if args.verbose:
-  visitor = seg_debug.segno_debug_visitor(parser)
-  visitor.visit(tree)
+  listener = seg_debug.segno_debug_listener(parser)
+  walker   = antlr4.ParseTreeWalker()
+  walker.walk(listener, tree)

@@ -1,16 +1,20 @@
-from segno_grammarVisitor import segno_grammarVisitor
+from segno_grammarListener import segno_grammarListener
 
-class segno_debug_visitor(segno_grammarVisitor):
+class segno_debug_listener(segno_grammarListener):
   def __init__(self, parser):
-    self.parser     = parser
-    self.identation = 0
+    self.parser      = parser
+    self.indentation = 0
+    pass
     
-  def visitChildren(self, ctx):
-    print(('  ' * self.identation) + self.parser.ruleNames[ctx.getRuleIndex()])
-    self.identation += 1
-    super().visitChildren(ctx)
-    self.identation -= 1
+  def enterEveryRule(self, ctx):
+    print(('|  ' * self.indentation) + "|- " + self.parser.ruleNames[ctx.getRuleIndex()])
+    self.indentation += 1
+    super().enterEveryRule(ctx)
+    
+  def exitEveryRule(self, ctx):
+    self.indentation -= 1
+    super().exitEveryRule(ctx)
     
   def visitTerminal(self, ctx):
-    print(('  ' * self.identation) + '"' + ctx.getText() + '"')
+    print(('|  ' * (self.indentation-1)) + '|- "' + ctx.getText() + '"')
     super().visitTerminal(ctx)
