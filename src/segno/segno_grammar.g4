@@ -69,7 +69,7 @@ prog_element
 // ------------------------------
 
 field_def
-    : KEYWORD_FIELD identifier_ex
+    : KEYWORD_FIELD identifier
     ;
     
 // ------------------------------
@@ -77,7 +77,7 @@ field_def
 // ------------------------------
 
 operator_def
-    : KEYWORD_OPERATOR identifier_ex
+    : KEYWORD_OPERATOR identifier
     ;
     
 // ------------------------------
@@ -85,7 +85,7 @@ operator_def
 // ------------------------------
 
 pass_def
-    : KEYWORD_PASS identifier_ex
+    : KEYWORD_PASS identifier
       TOKEN_CURL_LH
       pass_element_def*
       TOKEN_CURL_RH
@@ -99,10 +99,10 @@ pass_element_def
 //      identifiers
 // ------------------------------
 
-identifier_pure
+identifier_name
     : IDENTIFIER
     ;
 
-identifier_ex
-    : identifier_pure
+identifier
+    : identifier_name
     ;

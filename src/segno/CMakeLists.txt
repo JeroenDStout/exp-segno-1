@@ -12,6 +12,14 @@ setup_project_source(segno "processor"
   script:
     segno_proc.py
     segno/debug.py
+    segno/listener.py
+)
+setup_project_source(segno "processor/objects"
+  script:
+    segno/sg_field.py
+    segno/sg_operator.py
+    segno/sg_pass.py
+    segno/sg_identifier.py
 )
 
 # Antlr files

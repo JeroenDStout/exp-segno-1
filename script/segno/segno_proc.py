@@ -16,7 +16,8 @@ import antlr4
 from segno_grammarLexer   import segno_grammarLexer
 from segno_grammarParser  import segno_grammarParser
 
-from segno                import debug         as seg_debug
+from segno.debug    import debug_listener as sg_debug_listener
+from segno.listener import listener       as sg_listener
 
 with open(args.input) as file:
   data = file.read()
@@ -28,6 +29,12 @@ tree   = parser.prog()
 
 # debug
 if args.verbose:
-  listener = seg_debug.segno_debug_listener(parser)
+  print("Verbose tree:")
+  listener = sg_debug_listener(parser)
   walker   = antlr4.ParseTreeWalker()
   walker.walk(listener, tree)
+  print()
+
+listener = sg_listener(parser)
+walker   = antlr4.ParseTreeWalker()
+walker.walk(listener, tree)
