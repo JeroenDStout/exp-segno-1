@@ -1,10 +1,12 @@
 from segno_grammarListener import segno_grammarListener
-from segno_grammarParser import segno_grammarParser
-from .sg_field      import *
-from .sg_operator   import *
-from .sg_identifier import *
-from .sg_pass       import *
-from .sg_typename   import *
+from segno_grammarParser   import segno_grammarParser
+
+from .sg_translation_unit  import *
+from .sg_field             import *
+from .sg_operator          import *
+from .sg_identifier        import *
+from .sg_pass              import *
+from .sg_typename          import *
 
 from overrides import override
 
@@ -24,12 +26,21 @@ class sg_listener(segno_grammarListener):
     return self.stack.pop()
     
   @override
+  def enterProg(self, ctx:segno_grammarParser.ProgContext):
+    self.stack_push(sg_translation_unit_ctx())
+    
+  @override
+  def exitProg(self, ctx:segno_grammarParser.ProgContext):
+    self.stack_pop()
+    
+  @override
   def enterField_def(self, ctx:segno_grammarParser.Field_defContext):
     self.stack_push(sg_field_ctx())
     
   @override
   def exitField_def(self, ctx:segno_grammarParser.Field_defContext):
-    self.stack_pop()
+    identifier_ctx:sg_field_ctx = self.stack_pop()
+    self.stack[-1].exit_field(identifier_ctx)
     
   @override
   def enterOperator_def(self, ctx:segno_grammarParser.Operator_defContext):

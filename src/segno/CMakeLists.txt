@@ -16,6 +16,7 @@ setup_project_source(segno "processor"
 )
 setup_project_source(segno "processor/objects"
   script:
+    segno/sg_translation_unit.py
     segno/sg_field.py
     segno/sg_operator.py
     segno/sg_pass.py
