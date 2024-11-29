@@ -18,6 +18,9 @@ class writer_ctx():
   def stack_pop(self):
     self.stack.pop()
       
+  def stack_push_indent(self, amount):
+    self.stack.append(" " * amount) 
+      
   def stack_push_comment_cxx(self):
     self.stack.append("// ") 
       
@@ -46,6 +49,21 @@ class writer_ctx():
     self.end_space_block("struct_end")
     self.stack.pop() 
     self.write_line("};")
+    self.space_block([ ("*", 2), ( "namespace_end", 1) ])
+      
+  def stack_push_fn_cxx(self, identifier, arg=[], ret="void"):
+    self.space_block([ ("*", 1) ])
+    self.end_space_block("fn_start")
+    if ret == "void":
+      self.write_line("void " + identifier + "(" + ", ".join(arg) + ") {")
+    else:
+      self.write_line("auto " + identifier + "(" + ", ".join(arg) + ") -> " + ret + " {")
+    self.stack.append("    ") 
+      
+  def stack_pop_fn_cxx(self):
+    self.end_space_block("fn_end")
+    self.stack.pop() 
+    self.write_line("}")
     self.space_block([ ("*", 2), ( "namespace_end", 1) ])
     
   def space_block(self, space_types):

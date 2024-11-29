@@ -30,6 +30,7 @@ setup_project_source(segno "processor/generator"
     segno/generator_cxx_cpp.py
     segno/generator_cxx_decl.py
     segno/generator_cxx_impl.py
+    segno/generator_cxx_bind_nano.py
 )
 
 # Antlr files
