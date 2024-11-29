@@ -1,6 +1,5 @@
-from .generator_base import *
-from . import sg_translation_unit as sg_translation_unit
-from . import sg_field
+from .generator_base      import *
+from .sg_translation_unit import sg_translation_unit
 
 from overrides import override
 import json

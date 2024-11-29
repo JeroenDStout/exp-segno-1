@@ -20,6 +20,33 @@ class writer_ctx():
       
   def stack_push_comment_cxx(self):
     self.stack.append("// ") 
+      
+  def stack_push_namespace_cxx(self, namespace):
+    self.space_block([ ("*", 2) ])
+    self.end_space_block("namespace_start")
+    self.write_line("namespace " + namespace + " {")
+    self.space_block([ ("*", 1) ])
+    self.stack.append("    ") 
+      
+  def stack_pop_namespace_cxx(self):
+    self.space_block([ ("*", 1) ])
+    self.end_space_block("namespace_end")
+    self.stack.pop() 
+    self.write_line("}")
+    self.space_block([ ("*", 2), ("struct_start", 1) ])
+      
+  def stack_push_struct_cxx(self, identifier):
+    self.space_block([ ("*", 1) ])
+    self.end_space_block("struct_start")
+    self.write_line("struct " + identifier + " {")
+    self.stack.append("    ") 
+      
+  def stack_pop_struct_cxx(self):
+    self.space_block([ ("*", 1), ])
+    self.end_space_block("struct_end")
+    self.stack.pop() 
+    self.write_line("};")
+    self.space_block([ ("*", 2), ( "namespace_end", 1) ])
     
   def space_block(self, space_types):
     for st in space_types:
