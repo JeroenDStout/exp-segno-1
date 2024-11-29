@@ -12,9 +12,10 @@ from overrides import override
 
 class sg_listener(segno_grammarListener):
   def __init__(self, parser):
-    self.parser      = parser
-    self.stack       = []
-    self.debug_mode  = True
+    self.parser           = parser
+    self.stack            = []
+    self.debug_mode       = False
+    self.translation_unit = None
     pass
   
   def stack_push(self, element):
@@ -33,7 +34,7 @@ class sg_listener(segno_grammarListener):
     
   @override
   def exitProg(self, ctx:segno_grammarParser.ProgContext):
-    self.stack_pop()
+    self.translation_unit = self.stack_pop()
     
   @override
   def enterField_def(self, ctx:segno_grammarParser.Field_defContext):

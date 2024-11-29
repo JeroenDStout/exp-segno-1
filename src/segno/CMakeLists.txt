@@ -8,7 +8,7 @@ setup_project_source(segno "lang"
   src:
     segno_grammar.g4
 )
-setup_project_source(segno "processor"
+setup_project_source(segno "processor/core"
   script:
     segno_proc.py
     segno/sg_listener.py
@@ -22,6 +22,14 @@ setup_project_source(segno "processor/objects"
     segno/sg_pass.py
     segno/sg_identifier.py
     segno/sg_typename.py
+)
+setup_project_source(segno "processor/generator"
+  script:
+    segno/writer_ctx.py
+    segno/generator_base.py
+    segno/generator_cxx_cpp.py
+    segno/generator_cxx_decl.py
+    segno/generator_cxx_impl.py
 )
 
 # Antlr files
