@@ -2,8 +2,8 @@ class sg_identifier():
   def __init__(self):
     self.name = "UNNAMED_IDENTIFIER"
   
-  def create_debug_string(self):
-    return "{ name: " + self.name + " }"
+  def create_debug_dict(self):
+    return { "name" : self.name }
 
 class sg_identifier_ctx():
   def __init__(self):
@@ -14,5 +14,9 @@ class sg_identifier_ctx():
     self.sg_identifier.name = ctx.getText()
     pass
   
-  def create_debug_string(self):
-    return "{ identifier: " + self.sg_identifier.create_debug_string() + " }"
+  def get_short_name(self):
+    return "identf"
+  
+  def create_debug_dict(self):
+    return { "identifier" : self.sg_identifier.create_debug_dict() }
+ 

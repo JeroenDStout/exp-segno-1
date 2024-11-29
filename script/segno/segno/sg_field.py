@@ -6,11 +6,10 @@ class sg_field():
     self.sg_identifier = sg_identifier()
     self.sg_typename   = sg_typename()
   
-  def create_debug_string(self):
-    return ( "{ identifier: " + self.sg_identifier.create_debug_string()
-           + "; typename: " + self.sg_typename.create_debug_string()
-           + " }"
-           )
+  def create_debug_dict(self):
+    return { "identifier" : self.sg_identifier.create_debug_dict()
+           , "typename"   : self.sg_typename.create_debug_dict()
+           }
 
 class sg_field_ctx():
   def __init__(self):
@@ -25,5 +24,8 @@ class sg_field_ctx():
     self.sg_field.sg_typename   = ctx.sg_typename
     pass
   
-  def create_debug_string(self):
-    return "{ field: " + self.sg_field.create_debug_string() + " }"
+  def get_short_name(self):
+    return "field"
+  
+  def create_debug_dict(self):
+    return { "field" : self.sg_field.create_debug_dict() }

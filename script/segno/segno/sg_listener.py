@@ -19,10 +19,12 @@ class sg_listener(segno_grammarListener):
   
   def stack_push(self, element):
     self.stack.append(element)
+    if self.debug_mode:
+      print(" | ".join([ e.get_short_name() for e in self.stack ]))
   
   def stack_pop(self):
     if self.debug_mode:
-      print("- " * (len(self.stack) - 1) + self.stack[-1].create_debug_string())
+      print(" | ".join([ e.get_short_name() for e in self.stack ]) + " " + json.dumps(self.stack[-1].create_debug_dict(), indent=2))
     return self.stack.pop()
     
   @override
