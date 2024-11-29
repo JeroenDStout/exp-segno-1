@@ -1,4 +1,4 @@
-from segno.sg_identifier import *
+from .sg_identifier import *
 
 class sg_pass():
   def __init__(self):

@@ -1,5 +1,5 @@
-from segno.sg_identifier import *
-from segno.sg_typename   import *
+from .sg_identifier import *
+from .sg_typename   import *
 
 class sg_field():
   def __init__(self):

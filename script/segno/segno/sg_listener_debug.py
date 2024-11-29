@@ -1,6 +1,6 @@
 from segno_grammarListener import segno_grammarListener
 
-class debug_listener(segno_grammarListener):
+class sg_listener_debug(segno_grammarListener):
   def __init__(self, parser):
     self.parser      = parser
     self.indentation = 0

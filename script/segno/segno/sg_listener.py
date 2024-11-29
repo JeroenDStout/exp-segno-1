@@ -1,17 +1,16 @@
 from segno_grammarListener import segno_grammarListener
 from segno_grammarParser import segno_grammarParser
-from segno.sg_field import *
-from segno.sg_operator import *
-from segno.sg_identifier import *
-from segno.sg_pass import *
-from segno.sg_typename import *
+from .sg_field      import *
+from .sg_operator   import *
+from .sg_identifier import *
+from .sg_pass       import *
+from .sg_typename   import *
 
 from overrides import override
 
-class listener(segno_grammarListener):
+class sg_listener(segno_grammarListener):
   def __init__(self, parser):
     self.parser      = parser
-    self.indentation = 0
     self.stack       = []
     self.debug_mode  = True
     pass

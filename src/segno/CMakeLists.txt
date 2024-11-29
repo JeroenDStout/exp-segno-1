@@ -11,8 +11,8 @@ setup_project_source(segno "lang"
 setup_project_source(segno "processor"
   script:
     segno_proc.py
-    segno/debug.py
-    segno/listener.py
+    segno/sg_listener.py
+    segno/sg_listener_debug.py
 )
 setup_project_source(segno "processor/objects"
   script:
